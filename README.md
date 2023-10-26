@@ -7,4 +7,5 @@ A password generator for the Module 5 Challenge
 ### Resources
 * Cancel terminating: https://stackoverflow.com/questions/12864582/javascript-prompt-cancel-button-to-terminate-the-function 
 * Confirming: https://www.w3schools.com/jsref/met_win_confirm.asp#:~:text=The%20confirm()%20method%20displays,%22OK%22%2C%20otherwise%20false%20.
+* Convert to lowercase: https://w3schools.com/jsref/jsref_tolowercase.asp#:~:text=The%20toLowerCase()%20method%20converts,not%20change%20the%20original%20string.
 * 
