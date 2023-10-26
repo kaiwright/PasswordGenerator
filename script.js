@@ -88,10 +88,33 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+//function to check user wants to exit
+function ExitChecker() {
+  var checker = confirm("Selecting options is necessary for password generation. Are you sure you want to quit?")
+  if (checker === false) {
+    getPasswordOptions() 
+  } else {
+    return;
+  }
+}
+
 // Function to prompt user for password options
 function getPasswordOptions() {
+  // length of password (8-128)
+  var passwordLength = prompt("Choose Password length(between 8-128 characters)", 8);
+  if (passwordLength >= 8 && passwordLength <= 128) {
+  } else if (passwordLength === null) {
+    ExitChecker();
+  } else {
+    alert("Invalid response. Please try again.");
+    getPasswordOptions();
+  }
+
+  // character types (lowercase, uppercase, numeric, special characters)
 
 }
+
+getPasswordOptions()
 
 // Function for getting a random element from an array
 function getRandom(arr) {
