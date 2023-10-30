@@ -100,11 +100,13 @@ function ExitChecker() {
 }
 
 // Function to prompt user for password options
+var types = [];
 var passwordLength;
+var characters;
 var lowercase;
 var uppercase;
 var numbers;
-var specialChar;
+var special;
 
 function getPasswordOptions() {
 
@@ -112,7 +114,6 @@ function getPasswordOptions() {
   function getPasswordLength() {
     passwordLength = prompt("Choose Password length(between 8-128 characters)", 8);
     if (passwordLength >= 8 && passwordLength <= 128) {
-
     } else if (passwordLength === null) {
       ExitChecker();
     } else {
@@ -127,12 +128,13 @@ function getPasswordOptions() {
 
   // lowercase
   function wantLowercase() {
-    var characterTypes = prompt("Would you like lowercase letters? (Yes or No)");
-    if (characterTypes == "Yes") {
+    var characterTypes = prompt("Would you like lowercase letters? (Yes or No)", "yes");
+    characterTypes.toLowerCase();
+    if (characterTypes == "yes") {
+      types.push(lowerCasedCharacters);
+      characters = (characters + 1);
       lowercase = true;
-    } else if (characterTypes == "No") {
-      lowercase = false;
-
+    } else if (characterTypes === "no") {
     } else if (characterTypes === null) {
       ExitChecker();
     } else {
@@ -145,12 +147,13 @@ function getPasswordOptions() {
 
   // uppercase
   function wantUppercase() {
-    var characterTypes = prompt("Would you like uppercase letters? (Yes or No)");
-    if (characterTypes == "Yes") {
+    var characterTypes = prompt("Would you like uppercase letters? (Yes or No)", "yes");
+    characterTypes.toLowerCase();
+    if (characterTypes == "yes") {
+      types.push(upperCasedCharacters);
+      characters = (characters + 1);
       uppercase = true;
-    } else if (characterTypes == "No") {
-      uppercase = false;
-
+    } else if (characterTypes === "no") {
     } else if (characterTypes === null) {
       ExitChecker();
     } else {
@@ -163,12 +166,13 @@ function getPasswordOptions() {
 
   // numeric
   function wantNumbers() {
-    var characterTypes = prompt("Would you like numeric values? (Yes or No)");
-    if (characterTypes == "Yes") {
+    var characterTypes = prompt("Would you like numeric values? (Yes or No)", "yes");
+    characterTypes.toLowerCase();
+    if (characterTypes == "yes") {
+      types.push(numericCharacters);
+      characters = (characters + 1);
       numbers = true;
-    } else if (characterTypes == "No") {
-      numbers = false;
-
+    } else if (characterTypes === "no") {
     } else if (characterTypes === null) {
       ExitChecker();
     } else {
@@ -181,13 +185,13 @@ function getPasswordOptions() {
 
   // special characters
   function wantSpecial() {
-    var characterTypes = prompt("Would you like special characters? (Yes or No)");
+    var characterTypes = prompt("Would you like special characters? (Yes or No)", "yes");
     characterTypes.toLowerCase();
     if (characterTypes === "yes") {
-      specialChar = true;
+      types.push(specialCharacters);
+      characters = (characters + 1);
+      special = true;
     } else if (characterTypes === "no") {
-      specialChar = false;
-
     } else if (characterTypes === null) {
       ExitChecker();
     } else {
@@ -198,30 +202,58 @@ function getPasswordOptions() {
   wantSpecial();
 
 }
-
 getPasswordOptions()
 
 
-
 // Function for getting a random element from an array
-function getRandom(arr) {
+var generated = []
 
+function getRandom(arr, store) {
+  // gets a random value
+  store = arr[Math.floor(Math.random() * arr.length)];
+  // push random value to outside array
+  generated.push(store);
+  return (generatePassword);
 }
+
 
 
 // Function to generate password with user input
 function generatePassword() {
-  // password length
-  for (var i = 0; i < passwordLength.length; i++) {
-    if (uppercase === lowercase === numbers === specialChar) {
-      for (var i = 0; i < passwordLength.length; i++) {
-        var randomiser = array[index]; 
-        
-      }
-
-    } 
+  for (let i = 0; i < passwordLength; i++) {
+    // get a character type at random
+    randomType = types[Math.floor(Math.random() * types.length)];
+    //calls random function with a random character type
+    getRandom(randomType);
   }
+}
 
+//checker 
+function checker(arr) {
+  if (generated.includes(arr)) {
+    return;
+  } else if (!generated.includes(arr)) {
+    generatePassword()
+  } else {
+  }
+}
+
+if (uppercase === true) {
+  checker(upperCasedCharacters);
+} if (lowercase === true) {
+  checker(lowerCasedCharacters);
+} if (numbers === true) {
+  checker(numericCharacters);
+} if (special === true) {
+  checker(specialCharacters);
+} else {
+}
+
+if (generated > passwordLength) {
+  for (let i = 0; i < generated.length; i++) {
+    generated.slice(0)
+  }
+} else {
 }
 
 // Get references to the #generate element
@@ -229,11 +261,14 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  generatePassword();
   var passwordText = document.querySelector('#password');
 
-  passwordText.value = password;
+  passwordText.value = generated.join("");
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+
+
