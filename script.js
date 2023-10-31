@@ -202,8 +202,13 @@ getPasswordOptions()
 if (character < 1) {
   alert("You need to select at least one character type")
   if (alert === true) {
+    character = 0;
     getPasswordOptions()
+} else {
+  character = 0;
+  getPasswordOptions()
 }
+} else {
 }
 
 // Function for getting a random element from an array. Gets a random value and pushes it to the global array
