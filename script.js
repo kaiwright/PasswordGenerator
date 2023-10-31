@@ -202,11 +202,9 @@ getPasswordOptions()
 if (character < 1) {
   alert("You need to select at least one character type")
   if (alert === true) {
-    character = 0;
-    getPasswordOptions()
+    location.reload()
 } else {
-  character = 0;
-  getPasswordOptions()
+  location.reload()
 }
 } else {
 }
