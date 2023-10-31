@@ -104,6 +104,7 @@ var types = [];
 var generated = [];
 var passwordLength;
 var counter = 0;
+character = 0;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -130,6 +131,7 @@ function getPasswordOptions() {
     characterTypes.toLowerCase();
     if (characterTypes == "yes") {
       types.push(lowerCasedCharacters);
+      character = character + 1;
     } else if (characterTypes === "no") {
     } else if (characterTypes === null) {
       ExitChecker();
@@ -147,6 +149,7 @@ function getPasswordOptions() {
     characterTypes.toLowerCase();
     if (characterTypes == "yes") {
       types.push(upperCasedCharacters);
+      character = character + 1;
     } else if (characterTypes === "no") {
     } else if (characterTypes === null) {
       ExitChecker();
@@ -164,6 +167,7 @@ function getPasswordOptions() {
     characterTypes.toLowerCase();
     if (characterTypes == "yes") {
       types.push(numericCharacters);
+      character = character + 1;
     } else if (characterTypes === "no") {
     } else if (characterTypes === null) {
       ExitChecker();
@@ -181,6 +185,7 @@ function getPasswordOptions() {
     characterTypes.toLowerCase();
     if (characterTypes === "yes") {
       types.push(specialCharacters);
+      character = character + 1;
     } else if (characterTypes === "no") {
     } else if (characterTypes === null) {
       ExitChecker();
@@ -194,6 +199,12 @@ function getPasswordOptions() {
 }
 getPasswordOptions()
 
+if (character < 1) {
+  alert("You need to select at least one character type")
+  if (alert === true) {
+    getPasswordOptions()
+}
+}
 
 // Function for getting a random element from an array. Gets a random value and pushes it to the global array
 function getRandom(arr, store) {
