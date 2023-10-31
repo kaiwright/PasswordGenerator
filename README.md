@@ -2,7 +2,7 @@
 
 ## Description
 
-The aim of this project was to make a portfolio to display my future projects as a web developer. This was done through creating different sections for each part of my portfolio and creating boxes to display future work. In this project, I got a lot more practice using CSS flexbox and grid. I also got better with using media queries. 
+The aim of this project was to make an application that would allow an employee to generate a random password using selected criteria. This was done by building on the given starter code, adding functions to make prompts that can be called repeatedly if needed, to generate a random value repeatedly and to reload the page if criteria are met. I also used various types of methods to manipulate and iterate on the data. I got a lot of practice and gained a much more in depth understanding of these topics in this project. 
 
 ## Installation
 
@@ -11,11 +11,12 @@ Link: https://kaiwright.github.io/PasswordGenerator/
 
 ## Usage
 
-The website deploys from the link above. The page loads into the options with 
+The website deploys from the link above. The page loads into a series of prompts that ask the user to answer yes or no to different options. By pressing the button, the user can generate a password. If the button is clicked again, the page reloads so that new options can be selected and another password can be generated. The default options are displayed in the prompts, but can be easily overwritten by typing a different input. 
 
-![ Picture of the first section of Porfolio website](starter/images/portfolioWebsitePic1.PNG)
+![ Picture of the Options Prompts](assets/PasswordGenerator_prompt.PNG)
+![ Picture of the Password Generator](assets/PasswordGenerator_evidence.PNG)
 
-![ Picture of the second section of Portfolio website](starter/images/portfolioWebsitePic2.PNG)
+
 
 ## License
 
